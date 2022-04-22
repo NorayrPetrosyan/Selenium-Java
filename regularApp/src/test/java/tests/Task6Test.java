@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.Task6Page;
+import pageObjects.Task6Page;
 
 @Feature("Loging in and downloading the file")
 public class Task6Test {

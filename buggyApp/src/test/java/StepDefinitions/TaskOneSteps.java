@@ -14,12 +14,8 @@ public class TaskOneSteps extends TaskOnePage {
     public TaskOneSteps(BaseClass base) {
         super(base);
     }
-    @Given("User is on Task One page")
-    public void clickOnTaskButton() {
-        super.clickTaskButton();
-    }
 
-    @When("User adds products to the basket")
+    @When("I add products to the basket")
     public void addProductsToBasket() {
         int[] productsNo = {2, 3, 4};
         int[] productsQuantities = {8, 1, 11};
@@ -44,7 +40,7 @@ public class TaskOneSteps extends TaskOnePage {
         }
     }
 
-    @When("User removes products from the basket")
+    @When("I remove products from the basket")
     public void removeProductsFromBasket() {
         super.deleteAllProductsFromBasket();
     }
@@ -64,15 +60,9 @@ public class TaskOneSteps extends TaskOnePage {
         assertThat(super.getTotalPrice()).isEqualTo(Math.round(super.getProductsPrices() * 100.0) / 100.0f);
     }
 
-    @When("User adds 101 products to the basket")
+    @When("I add more than 100 products to the basket")
     public void addMoreThan100Products() {
         super.addProductToBasket(10, 101);
-    }
-
-    @Then("Alert with {string} text is displayed")
-    public void alertMessageIsDisplayed(String string) {
-        assertThat(super.getAlert().getText()).isEqualTo(string);
-        super.getAlert().accept();
     }
 
     @Then("The products are not added to the basket")

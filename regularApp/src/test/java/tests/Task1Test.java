@@ -7,7 +7,8 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
-import pages.Task1Page;
+import pageObjects.Task1Page;
+import pageObjects.Task2Page;
 
 @Feature("Adding a product to the cart")
 public class Task1Test {
@@ -15,8 +16,9 @@ public class Task1Test {
     private WebDriver driver;
     private Task1Page task1Page;
 
+
     @BeforeMethod
-    public void setUp() {
+    public void begin() {
         System.setProperty("webdriver.chrome.driver","C:\\Users\\User\\Documents\\driver\\chromedriver.exe");
         driver = new ChromeDriver();
         task1Page = new Task1Page(driver);
@@ -47,6 +49,8 @@ public class Task1Test {
 
     @Test(description = "Check total number of products added to the basket")
     public void checkTotalNumberOfProducts() {
+        task1Page.clickTaskButton();
+        task1Page.clickTaskButton();
         task1Page.addProductToBasket(3, 5);
         task1Page.addProductToBasket(4, 6);
         Assert.assertEquals(task1Page.getTotalProductsQuantities(), task1Page.getTotalNumberOfProducts());

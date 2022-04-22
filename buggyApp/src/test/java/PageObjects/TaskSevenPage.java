@@ -12,14 +12,9 @@ public class TaskSevenPage {
         this.base = base;
     }
 
-    By taskButton = By.cssSelector("[href='/task_7']");
     By inputFields = By.className("form-control");
     By draggablePhotos = By.cssSelector("[class='draggable ui-draggable ui-draggable-handle']");
     By placeToDrop = By.cssSelector("[class='panel-body']");
-
-    public void clickTaskButton() {
-        base.driver.findElement(taskButton).click();
-    }
 
     public void addProductToBasket(int productNo, int quantity) {
         base.driver.findElements(inputFields).get(productNo -1).clear();

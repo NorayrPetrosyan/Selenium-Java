@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.Task7Page;
+import pageObjects.Task7Page;
 
 @Feature("Adding a product to the cart via drag and drop")
 public class Task7Test {

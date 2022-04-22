@@ -14,12 +14,7 @@ public class TaskNineSteps extends TaskNinePage {
         super(base);
     }
 
-    @Given("User is on Task Nine page")
-    public void ClickOnTaskButton() {
-        super.clickTaskButton();
-    }
-
-    @When("User opens all nodes")
+    @When("I open all nodes")
     public void openAllNodes() {
         super.openAllNodes();
     }

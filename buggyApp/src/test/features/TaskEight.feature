@@ -1,47 +1,53 @@
 @test
 @taskEight
 Feature: Payment by card
+  Background:
+    When I click on Task eight button
 
   Scenario: Pay with valid card
-    Given User is on Task Eight page
-    When User selects "Visa" as card type
-    And User types "Tom Smith" as full name
-    And User types "4111111111111111" as card No
-    And User types "123" as CVV code
-    And User selects "April" as month
-    And User selects "2024" as year
-    And User clicks on 'Pay' button
-    Then A message about successful payment is displayed
+    Given Task eight page is opened
+    When I select Visa from card type container
+    And I type full name in full name field
+    And I type valid card No in card No field
+    And I type valid cvv code in cvv code field
+    And I select April from month container
+    And I select 2024 from year container
+    And I scroll down
+    And I click on pay button
+    Then successful payment message is visible
 
   Scenario: Pay with expired card
-    Given User is on Task Eight page
-    When User selects "MasterCard" as card type
-    And User types "Tom Black" as full name
-    And User types "5105105105105100" as card No
-    And User types "321" as CVV code
-    And User clicks on 'Pay' button
-    Then A message about card expiration is displayed
+    Given Task eight page is opened
+    When I select MasterCard from card type container
+    And I type full name in full name field
+    And I type valid card No in card No field
+    And I type valid cvv code in cvv code field
+    And I scroll down
+    And I click on pay button
+    Then card expiration message is visible
 
   Scenario: Check CVV information is displayed
-    Given User is on Task Eight page
-    When User hovers over info sign
-    Then CVV information is displayed
+    Given Task eight page is opened
+    When I hover over info sign
+    Then CVV information is visible
 
   Scenario: Pay with not matching card No
-    Given User is on Task Eight page
-    When User selects "MasterCard" as card type
-    And User types "Tom Black" as full name
-    And User types "51051" as card No
-    And User types "456" as CVV code
-    And User clicks on 'Pay' button
-    Then A message with "Please match the requested format." text, about not matching card No is displayed
+    Given Task eight page is opened
+    When I select MasterCard from card type container
+    And I type full name in full name field
+    And I type 51051 in card No field
+    And I type valid cvv code in cvv code field
+    And I scroll down
+    And I click on pay button
+    Then A message with Please match the requested format. text about not matching card No is displayed
 
   Scenario: Pay with invalid CVV code
-    Given User is on Task Eight page
-    When User selects "Switch/Solo (Paymentech)" as card type
-    And User types "Tom Black" as full name
-    And User types "6331101999990016" as card No
-    And User types "1234" as CVV code
-    And User clicks on 'Pay' button
-    Then A message about invalid CVV code is displayed
+    Given Task eight page is opened
+    When I select Switch/Solo (Paymentech) from card type container
+    And I type full name in full name field
+    And I type valid card No in card No field
+    And I type 1234 in cvv code field
+    And I scroll down
+    And I click on pay button
+    Then invalid CVV code message is visible
 

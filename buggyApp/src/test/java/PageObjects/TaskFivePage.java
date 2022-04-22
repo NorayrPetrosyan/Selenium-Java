@@ -18,18 +18,8 @@ public class TaskFivePage {
         this.base = base;
     }
 
-    By taskButton = By.cssSelector("[href='/task_5']");
-    By uploadFileButton = By.xpath("//input[@type='file']");
     By row = By.xpath(".//td");
     By tableBody = By.xpath(".//tbody");
-
-    public void clickTaskButton() {
-        base.driver.findElement(taskButton).click();
-    }
-
-    public void uploadFile(String filePath) {
-        base.driver.findElement(uploadFileButton).sendKeys(filePath);
-    }
 
     public List<WebElement> getRows() {
         return base.driver.findElements(row);

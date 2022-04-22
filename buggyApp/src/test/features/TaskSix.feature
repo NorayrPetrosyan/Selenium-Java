@@ -1,35 +1,41 @@
 @test
 @taskSix
 Feature: Loging in and downloading the file
+  Background:
+    When I click on Task six button
 
   Scenario: Login with valid data
-    Given User is on Task Six page
-    When User types "tester" as login
-    And User types "123-xyz" as password
-    And User clicks 'Login' button
-    Then User logs in
+    Given Task six page is opened
+    When I type tester in login field
+    And I type 123-xyz in password field
+    And I click on login button
+    Then I am logged in
 
   Scenario: Log out
-    Given User is on Task Six page
-    And User is logged in
-    When User logs out
-    Then User is logged out
+    Given Task six page is opened
+    When I type tester in login field
+    And I type 123-xyz in password field
+    And I click on login button
+    And I click on logout button
+    Then I am logged out
 
   Scenario: Login with invalid data
-    Given User is on Task Six page
-    When User types "login" as login
-    And User types "password" as password
-    And User clicks 'Login' button
-    Then Error message is displayed
-    And User is not logged in
+    Given Task six page is opened
+    When I type login in login field
+    And I type password in password field
+    And I click on login button
+    Then invalid login message is visible
+    And I am not logged in
 
   Scenario: Login with no data
-    Given User is on Task Six page
-    When User clicks 'Login' button
-    Then User is not logged in
+    Given Task six page is opened
+    When I click on login button
+    Then I am not logged in
 
   Scenario: Download the file
-    Given User is on Task Six page
-    And User is logged in
-    When User downloads the file
+    Given Task six page is opened
+    When I type tester in login field
+    And I type 123-xyz in password field
+    And I click on login button
+    And I click on download button
     Then The file is downloaded

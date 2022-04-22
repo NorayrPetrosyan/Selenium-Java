@@ -17,13 +17,8 @@ public class TaskNinePage {
         this.base = base;
     }
 
-    By taskButton = By.cssSelector("[href='/task_9']");
     By node = By.cssSelector("a.jstree-anchor");
     By title = By.xpath(".//h1");
-
-    public void clickTaskButton() {
-        base.driver.findElement(taskButton).click();
-    }
 
     public void openAllNodes() {
         String path = "//li[@aria-expanded='false']";

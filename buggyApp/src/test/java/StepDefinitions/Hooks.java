@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Hooks extends BaseClass {
 
-    private BaseClass base;
+    private final BaseClass base;
 
     public Hooks(BaseClass base) {
         this.base = base;

@@ -1,13 +1,8 @@
 package PageObjects;
 
 import BaseClass.BaseClass;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class TaskOnePage extends BaseClass {
 
@@ -17,7 +12,6 @@ public class TaskOnePage extends BaseClass {
         this.base = base;
     }
 
-    By taskButton = By.cssSelector("[href='/task_1']");
     By inputFields = By.className("form-control");
     By addButtons = By.className("btn-sm");
     By deleteButtons = By.xpath("//button[@class='btn btn-sm' and text()='Usuń']");
@@ -28,14 +22,10 @@ public class TaskOnePage extends BaseClass {
     By basketProductsNames = By.className("col-md-9");
     By basketProductsQuantities = By.className("row-in-basket-quantity");
 
-    public void clickTaskButton() {
-        base.driver.findElement(taskButton).click();
-    }
-
     public void addProductToBasket(int productNo, int quantity) {
-        base.driver.findElements(inputFields).get(productNo -1).clear();
-        base.driver.findElements(inputFields).get(productNo -1).sendKeys(quantity+"");
-        base.driver.findElements(addButtons).get(productNo -1).click();
+        base.driver.findElements(inputFields).get(productNo-1).clear();
+        base.driver.findElements(inputFields).get(productNo-1).sendKeys(quantity+"");
+        base.driver.findElements(addButtons).get(productNo-1).click();
     }
 
     public void deleteAllProductsFromBasket() {
@@ -54,7 +44,7 @@ public class TaskOnePage extends BaseClass {
     }
 
     public String getProductName(int productNo) {
-        return base.driver.findElements(productsNames).get(productNo -1).getText();
+        return base.driver.findElements(productsNames).get(productNo-1).getText();
     }
 
     public int getBasketProductQuantity(int productNo) {
@@ -67,12 +57,6 @@ public class TaskOnePage extends BaseClass {
 
     public int getNumberOfProductsInBasket() {
         return base.driver.findElements(basketProductsNames).size();
-    }
-
-    public Alert getAlert() {
-        WebDriverWait wait = new WebDriverWait(base.driver, Duration.ofSeconds(2));
-        wait.until(ExpectedConditions.alertIsPresent());
-        return base.driver.switchTo().alert();
     }
 
     public int getTotalNumberOfProducts() {

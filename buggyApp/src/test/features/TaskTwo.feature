@@ -1,11 +1,13 @@
 @test
 @taskTwo
 Feature: Filtering products by category
+  Background:
+    When I click on Task two button
 
   Scenario Outline: Filter products
-    Given User is on Task Two page
-    When User selects "<filter>" as filter
-    Then Products are filtered by "<filter>"
+    Given Task two page is opened
+    When I set <filter> as filter
+    Then Products are filtered by <filter>
 
     Examples:
       | filter         |
@@ -14,9 +16,10 @@ Feature: Filtering products by category
       | Firma i usługi |
 
   Scenario Outline: Search for an existing filter
-    Given User is on Task Two page
-    When User types "<filter>" as filter name in filter search field
-    Then Searched "<filter>" name is in search results
+    Given Task two page is opened
+    When I click on filter container
+    And I type <filter> in filter search field
+    Then <filter> is in search results
 
     Examples:
       | filter         |
@@ -25,11 +28,13 @@ Feature: Filtering products by category
       | Firma i usługi |
 
   Scenario: Check the search field is case-sensitive
-    Given User is on Task Two page
-    When User types "sport" as filter name in filter search field
-    Then "Sport" is in search results
+    Given Task two page is opened
+    When I click on filter container
+    And I type sport in filter search field
+    Then Sport is in search results
 
   Scenario: Search an invalid filter
-    Given User is on Task Two page
-    When User types "Dance" as filter name in filter search field
+    Given Task two page is opened
+    When I click on filter container
+    And I type dance in filter search field
     Then No results found

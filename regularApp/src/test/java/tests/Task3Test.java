@@ -1,5 +1,6 @@
 package tests;
 
+import com.github.javafaker.Faker;
 import io.qameta.allure.Feature;
 import org.junit.Assert;
 import org.testng.annotations.Test;
@@ -8,16 +9,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.Task3Page;
+import pageObjects.Task3Page;
 
 @Feature("Editing the form")
 public class Task3Test {
 
+    Faker faker = new Faker();
     private WebDriver driver;
     private Task3Page task3Page;
     private String previousPhotoSrc;
     private String currentPhotoSrc;
-    private final String filePath = "C:\\Users\\User\\Documents\\Selenium-Java\\Testing Material\\";
+    private String name = faker.name().firstName();
+    private String surname = faker.name().lastName();
+    private String telNumber = faker.numerify("###########");
+    private String note = "something";
+    private filePath = "C:\\Users\\User\\Documents\\Selenium-Java\\Testing Material\\";
 
     @BeforeMethod
     public void setUp() {
@@ -56,10 +62,10 @@ public class Task3Test {
 
     @Test(description = "Fill form with valid data")
     public void fillFormWithValidData() {
-        task3Page.typeName("Tom");
-        task3Page.typeSurname("Smith");
-        task3Page.typeNote("Something");
-        task3Page.typeTelNumber("19154234567");
+        task3Page.typeName(name);
+        task3Page.typeSurname(surname);
+        task3Page.typeNote(note);
+        task3Page.typeTelNumber(telNumber);
         task3Page.uploadFile(filePath+"image.png");
         task3Page.clickSaveButton();
         Assert.assertTrue(task3Page.getMessage().isDisplayed());

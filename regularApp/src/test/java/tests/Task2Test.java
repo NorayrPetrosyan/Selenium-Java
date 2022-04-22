@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.Task2Page;
+import pageObjects.Task2Page;
 import java.util.List;
 
 @Feature("Filtering products by category")

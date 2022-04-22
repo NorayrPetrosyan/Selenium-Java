@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.Task5Page;
+import pageObjects.Task5Page;
 
 @Feature("Uploading data to the application")
 public class Task5Test {
@@ -15,7 +15,7 @@ public class Task5Test {
     private WebDriver driver;
     private Task5Page task5Page;
     private String fileName;
-    private final String filePath = "C:\\Users\\User\\Documents\\Selenium-Java\\Testing Material\\";
+    private String filePath = "C:\\Users\\User\\Documents\\Selenium-Java\\Testing Material\\";
 
     @BeforeMethod
     public void setUp() {

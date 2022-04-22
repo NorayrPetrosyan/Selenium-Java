@@ -1,5 +1,6 @@
 package tests;
 
+import com.github.javafaker.Faker;
 import io.qameta.allure.Feature;
 import org.junit.Assert;
 import org.testng.annotations.Test;
@@ -9,16 +10,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.Task4Page;
+import pageObjects.Task4Page;
 
 @Feature("Completing the form in a separate window")
 public class Task4Test {
 
+    Faker faker = new Faker();
     private WebDriver driver;
     private Task4Page task4Page;
-    private String validName = "Alan";
-    private String validEmail = "test2022@gmail.com";
-    private String validTelNumber = "123-456-789";
+    private String validName = faker.name().firstName();
+    private String validEmail = faker.internet().emailAddress();
+    private String validTelNumber = faker.numerify("###-###-###");
 
 
     @BeforeMethod

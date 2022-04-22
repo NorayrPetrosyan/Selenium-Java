@@ -2,9 +2,7 @@ package StepDefinitions;
 
 import BaseClass.BaseClass;
 import PageObjects.TaskFivePage;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import static org.assertj.core.api.Assertions.*;
 
 public class TaskFiveSteps extends TaskFivePage {
@@ -15,24 +13,14 @@ public class TaskFiveSteps extends TaskFivePage {
 
     private final String filePath = "C:\\Users\\User\\Documents\\Selenium-Java\\Testing Material\\";
 
-    @Given("User is on Task Five page")
-    public void ClickOnTaskButton() {
-        super.clickTaskButton();
+    @Then("{} file is uploaded")
+    public void isUploaded(String fileName) {
+        assertThat(super.fileIsUploaded(filePath+fileName)).isTrue();
     }
 
-    @When("User uploads {string} file")
-    public void uploadFile(String string) {
-        super.uploadFile(filePath+string);
-    }
-
-    @Then("{string} file is uploaded")
-    public void isUploaded(String string) {
-        assertThat(super.fileIsUploaded(filePath+string)).isTrue();
-    }
-
-    @Then("{string} file is not uploaded")
-    public void isNotUploaded(String string) {
-        assertThat(super.fileIsUploaded(filePath+string)).isFalse();
+    @Then("{} file is not uploaded")
+    public void isNotUploaded(String fileName) {
+        assertThat(super.fileIsUploaded(filePath+fileName)).isFalse();
     }
 
 }

@@ -1,37 +1,42 @@
 @test
 @taskThree
 Feature: Editing the form
+  Background:
+    When I click on Task three button
 
   Scenario: Make form editable
-    Given User is on Task Three page
-    When User makes form editable
+    Given Task three page is opened
+    When I make the form editable
     Then The form input fields are enabled
 
   Scenario: Upload a new photo
-    Given User is on Task Three page
-    When User makes form editable
-    And User uploads a photo
+    Given Task three page is opened
+    When I make the form editable
+    And I upload image.png from upload button in Task three page
     Then The photo is updated
 
   Scenario: Upload a wrong formatted file
-    Given User is on Task Three page
-    When User makes form editable
-    And User uploads a wrong formatted file
-    Then Alert with 'Zły format pliku!' text is displayed
+    Given Task three page is opened
+    When I make the form editable
+    And I upload wrongFileFormat.xlsx from upload button in Task three page
+    Then Alert with Zły format pliku! text is displayed
     And The photo is not changed
 
   Scenario: Fill form with valid data
-    Given User is on Task Three page
-    When User makes form editable
-    And User fills form with valid data
-    And User uploads a photo
-    And User clicks on 'Save' button
-    Then A message about successful registration is displayed
+    Given Task three page is opened
+    When I make the form editable
+    And I type name in first name field
+    And I type surname in surname field
+    And I type something in notes field
+    And I type phone number in phone number field
+    And I upload image.png from upload button in Task three page
+    And I click on save button
+    Then successful registration message is visible
     And The form input fields are disabled
 
   Scenario: Fill form with no data
-    Given User is on Task Three page
-    When User makes form editable
-    And User fills form with no data
-    And User clicks on 'Save' button
-    Then 'Save' button is disabled
+    Given Task three page is opened
+    When I make the form editable
+    And I fill the form with no data
+    And I click on save button
+    Then Save button is disabled
